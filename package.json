@@ -1,0 +1,19 @@
+{
+  "name": "expproject",
+  "version": "1.0.0",
+  "description": "Frontend Roadmap Project Summer 2020",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/razergom/ExpProject.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/razergom/ExpProject/issues"
+  },
+  "homepage": "https://github.com/razergom/ExpProject#readme"
+}
