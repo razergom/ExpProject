@@ -15,5 +15,9 @@
   "bugs": {
     "url": "https://github.com/razergom/ExpProject/issues"
   },
-  "homepage": "https://github.com/razergom/ExpProject#readme"
+  "homepage": "https://github.com/razergom/ExpProject#readme",
+  "devDependencies": {
+    "webpack": "^4.43.0",
+    "webpack-cli": "^3.3.12"
+  }
 }
