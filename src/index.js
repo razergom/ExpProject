@@ -1,9 +1,5 @@
-function component() {
-    const element = document.createElement('div');
-    const elemText = document.createTextNode('Hello, World');
+import { getHelloDiv } from './hello.js';
+import { showAlert } from './alert.js';
 
-    element.appendChild(elemText);
-    return element;
-}
-
-document.body.appendChild(component());
+document.body.appendChild(getHelloDiv());
+showAlert();
