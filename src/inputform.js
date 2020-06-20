@@ -13,5 +13,6 @@ export function getInputFormDiv() {
 
     element.appendChild(inputField);
     element.appendChild(addbtn);
+    element.setAttribute('style', 'margin: 0');
     return element;
 }
