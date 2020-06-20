@@ -2,6 +2,11 @@ import { getInputFormDiv } from './inputForm.js';
 import { getTaskListDiv } from './tasklist.js';
 import { add } from 'lodash';
 
+import React, { Component } from "react";
+import ReactDOM from "react-dom";
+
+// Main Programm Section
+
 function addTask() {
     const taskInputElem = document.getElementById('#todo-input');
     const textTask = taskInputElem.value;
@@ -39,8 +44,8 @@ function main() {
     const inputFormDiv = getInputFormDiv();
     const taskListDiv = getTaskListDiv();
 
-    document.body.appendChild(inputFormDiv);
-    document.body.appendChild(taskListDiv);
+    app.appendChild(inputFormDiv);
+    app.appendChild(taskListDiv);
 
     const addbtn = document.getElementById('#addbtn');
     addbtn.onclick = addTask;
