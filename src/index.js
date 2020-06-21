@@ -1,12 +1,63 @@
-import { getInputFormDiv } from './inputForm.js';
-import { getTaskListDiv } from './tasklist.js';
-import { add } from 'lodash';
+//import { getInputFormDiv } from './inputForm.js';
+//import { getTaskListDiv } from './tasklist.js';
+//import { add } from 'lodash';
+
+import { InputFormDiv } from './inputform.js';
+import { ItemListDiv } from './tasklist.js';
 
 import React, { Component } from "react";
 import ReactDOM from "react-dom";
 
-// Main Programm Section
 
+class App extends React.Component {
+    constructor(props) {
+        super(props);
+        this.state = {
+            currentTask: '',
+            tasks: []
+        }
+
+        this.changeState = this.changeState.bind(this);
+        this.addTask = this.addTask.bind(this);
+    }
+
+    addTask() {
+        console.log('clicked');
+        this.setState({tasks: [...this.state.tasks, this.state.currentTask], currentTask: ''});
+        console.log(this.state.tasks);
+    }
+
+    changeState(ev) {
+        this.setState({currentTask: ev.target.value})
+    }
+
+
+
+
+    render() {
+        return (
+            <div id='#app'>
+                <InputFormDiv valtext={this.state.currentTask} onChangeHandler={this.changeState} clickHandler={this.addTask} itemType='Task'/>
+                <ItemListDiv items={this.state.tasks} />
+            </div>
+        );
+    }
+}
+
+
+
+function main() {
+    ReactDOM.render(<App />, document.body);
+}
+
+main();
+
+
+
+
+
+// Without React Section
+/*
 function addTask() {
     const taskInputElem = document.getElementById('#todo-input');
     const textTask = taskInputElem.value;
@@ -36,6 +87,7 @@ function taskInteractionSetup() {
     });
 }
 
+
 function main() {
     const app = document.createElement('div');
     app.setAttribute('id', '#app');
@@ -52,5 +104,4 @@ function main() {
 
     taskInteractionSetup();
 }
-
-main();
+*/
