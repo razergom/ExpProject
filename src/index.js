@@ -14,31 +14,36 @@ class App extends React.Component {
         super(props);
         this.state = {
             currentTask: '',
-            tasks: []
+            tasks: [],
+            taskStates: []
         }
 
         this.changeState = this.changeState.bind(this);
         this.addTask = this.addTask.bind(this);
+        this.editTaskState = this.editTaskState.bind(this);
     }
 
     addTask() {
-        console.log('clicked');
-        this.setState({tasks: [...this.state.tasks, this.state.currentTask], currentTask: ''});
-        console.log(this.state.tasks);
+        this.setState({tasks: [...this.state.tasks, this.state.currentTask], currentTask: '', taskStates: [...this.state.taskStates, false]});
     }
 
     changeState(ev) {
         this.setState({currentTask: ev.target.value})
     }
 
-
+    editTaskState(ev) {
+        const index = ev.target.getAttribute('data-index');
+        const newTaskStates = this.state.taskStates;
+        newTaskStates[index] = !newTaskStates[index];
+        this.setState({taskStates: newTaskStates});
+    }
 
 
     render() {
         return (
             <div id='#app'>
                 <InputFormDiv valtext={this.state.currentTask} onChangeHandler={this.changeState} clickHandler={this.addTask} itemType='Task'/>
-                <ItemListDiv items={this.state.tasks} />
+                <ItemListDiv items={this.state.tasks} itemStates={this.state.taskStates} clickHandler={this.editTaskState} />
             </div>
         );
     }
