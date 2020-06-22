@@ -1,13 +1,13 @@
 import React from "react";
 
-import { InputFormDiv } from "./inputform.jsx";
-import { ItemListDiv } from "./tasklist.jsx";
+import { InputFormDiv } from "./InputFormDiv.jsx";
+import { ItemListDiv } from "./ItemListDiv.jsx";
 
 export default class App extends React.Component {
   state = {
+    id: 0,
     currentTask: "",
     tasks: [],
-    taskStates: [],
   };
 
   addTask = () => {
@@ -16,26 +16,40 @@ export default class App extends React.Component {
       return;
     }
 
+    let newTask = {};
+    newTask.task = this.state.currentTask;
+    newTask.id = this.state.id;
+    newTask.done = false;
+
+    const newTasks = this.state.tasks;
+    newTasks.push(newTask);
+
+    console.log(newTasks);
+
     this.setState({
-      tasks: [...this.state.tasks, this.state.currentTask],
+      tasks: newTasks,
       currentTask: "",
-      taskStates: [...this.state.taskStates, false],
+      id: this.state.id + 1,
     });
+
+    console.log(this.state.tasks);
   };
 
-  changeState = (ev) => {
-    this.setState({ currentTask: ev.target.value });
+  changeState = (event) => {
+    this.setState({ currentTask: event.target.value });
   };
 
-  editTaskState = (ev) => {
-    const index = ev.target.getAttribute("data-index");
-    const newTaskStates = this.state.taskStates;
-    newTaskStates[index] = !newTaskStates[index];
-    this.setState({ taskStates: newTaskStates });
+  editTaskState = (event) => {
+    const index = event.target.getAttribute("data-index");
+
+    const newTasks = this.state.tasks;
+    newTasks[index].done = !newTasks[index].done;
+
+    this.setState({ taskStates: newTasks });
   };
 
   render() {
-    const { tasks, currentTask, taskStates } = this.state;
+    const { tasks, currentTask } = this.state;
 
     return (
       <div id="#app">
@@ -45,11 +59,7 @@ export default class App extends React.Component {
           clickHandler={this.addTask}
           itemType="Task"
         />
-        <ItemListDiv
-          items={tasks}
-          itemStates={taskStates}
-          clickHandler={this.editTaskState}
-        />
+        <ItemListDiv items={tasks} clickHandler={this.editTaskState} />
       </div>
     );
   }
