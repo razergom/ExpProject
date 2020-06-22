@@ -4,20 +4,13 @@ import { InputFormDiv } from "./inputform.jsx";
 import { ItemListDiv } from "./tasklist.jsx";
 
 export default class App extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      currentTask: "",
-      tasks: [],
-      taskStates: [],
-    };
+  state = {
+    currentTask: "",
+    tasks: [],
+    taskStates: [],
+  };
 
-    this.changeState = this.changeState.bind(this);
-    this.addTask = this.addTask.bind(this);
-    this.editTaskState = this.editTaskState.bind(this);
-  }
-
-  addTask() {
+  addTask = () => {
     if (this.state.currentTask === "") {
       alert("Please enter task");
       return;
@@ -28,18 +21,18 @@ export default class App extends React.Component {
       currentTask: "",
       taskStates: [...this.state.taskStates, false],
     });
-  }
+  };
 
-  changeState(ev) {
+  changeState = (ev) => {
     this.setState({ currentTask: ev.target.value });
-  }
+  };
 
-  editTaskState(ev) {
+  editTaskState = (ev) => {
     const index = ev.target.getAttribute("data-index");
     const newTaskStates = this.state.taskStates;
     newTaskStates[index] = !newTaskStates[index];
     this.setState({ taskStates: newTaskStates });
-  }
+  };
 
   render() {
     const { tasks, currentTask, taskStates } = this.state;
