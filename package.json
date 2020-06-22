@@ -29,6 +29,8 @@
     "@babel/preset-react": "^7.10.1",
     "babel-loader": "^8.1.0",
     "clean-webpack-plugin": "^3.0.0",
+    "eslint": "^7.3.0",
+    "eslint-plugin-react": "^7.20.0",
     "html-webpack-plugin": "^4.3.0",
     "husky": "^4.2.5",
     "prettier": "2.0.5",

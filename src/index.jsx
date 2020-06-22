@@ -1,7 +1,7 @@
 import { InputFormDiv } from "./inputform.js";
 import { ItemListDiv } from "./tasklist.js";
 
-import React, { Component } from "react";
+import React from "react";
 import ReactDOM from "react-dom";
 
 class App extends React.Component {
