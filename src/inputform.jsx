@@ -1,5 +1,3 @@
-/* eslint react/prop-types: 0 */
-
 import React from "react";
 
 export class InputFormDiv extends React.Component {

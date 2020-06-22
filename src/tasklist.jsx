@@ -1,5 +1,3 @@
-/* eslint react/prop-types: 0 */
-
 import React from "react";
 
 export class ItemListDiv extends React.Component {
