@@ -5,14 +5,14 @@ export class InputFormDiv extends React.Component {
     return (
       <div className="input-form">
         <input
-          value={this.props.valtext}
+          value={this.props.value}
           type="text"
           id="#todo-input"
           placeholder="Enter Task"
-          onChange={this.props.onChangeHandler}
+          onChange={this.props.onChange}
         ></input>
-        <button id="#addbtn" onClick={this.props.clickHandler}>
-          Add {this.props.itemType}
+        <button id="#addbtn" onClick={this.props.onClick}>
+          Add Task
         </button>
       </div>
     );
