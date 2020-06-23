@@ -35,13 +35,22 @@ export default class App extends React.Component {
     this.setState({ currentTask: event.target.value });
   };
 
-  editTaskState = (event) => {
-    const index = event.target.getAttribute("data-index");
-
+  editTaskState = (id) => {
     const newTasks = this.state.tasks;
+
+    let index = 0;
+
+    for (let i = 0; i < newTasks.length; i++) {
+      if (newTasks[i].id === id) {
+        index = i;
+        break;
+      }
+    }
+
     newTasks[index].done = !newTasks[index].done;
 
     this.setState({ taskStates: newTasks });
+    console.log(this.state.tasks);
   };
 
   render() {

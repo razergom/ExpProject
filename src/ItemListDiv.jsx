@@ -13,9 +13,8 @@ export class ItemListDiv extends React.Component {
                     ? { textDecoration: "line-through" }
                     : undefined
                 }
-                onClick={this.props.onClick}
-                data-index={index}
-                key={index}
+                onClick={() => this.props.onClick(this.props.items[index].id)}
+                key={this.props.items[index].id}
               >
                 {item.task}
               </li>
