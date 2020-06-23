@@ -24,15 +24,11 @@ export default class App extends React.Component {
     const newTasks = this.state.tasks;
     newTasks.push(newTask);
 
-    console.log(newTasks);
-
-    this.setState({
+    this.setState((prevState) => ({
       tasks: newTasks,
       currentTask: "",
-      id: this.state.id + 1,
-    });
-
-    console.log(this.state.tasks);
+      id: prevState.id + 1,
+    }));
   };
 
   updateCurrentTask = (event) => {
