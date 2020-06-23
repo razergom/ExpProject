@@ -13,7 +13,7 @@ export class ItemListDiv extends React.Component {
                     ? { textDecoration: "line-through" }
                     : undefined
                 }
-                onClick={this.props.clickHandler}
+                onClick={this.props.onClick}
                 data-index={index}
                 key={index}
               >

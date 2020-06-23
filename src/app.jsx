@@ -35,7 +35,7 @@ export default class App extends React.Component {
     console.log(this.state.tasks);
   };
 
-  changeState = (event) => {
+  updateCurrentTask = (event) => {
     this.setState({ currentTask: event.target.value });
   };
 
@@ -52,14 +52,13 @@ export default class App extends React.Component {
     const { tasks, currentTask } = this.state;
 
     return (
-      <div id="#app">
+      <div>
         <InputFormDiv
-          valtext={currentTask}
-          onChangeHandler={this.changeState}
-          clickHandler={this.addTask}
-          itemType="Task"
+          value={currentTask}
+          onChange={this.updateCurrentTask}
+          onClick={this.addTask}
         />
-        <ItemListDiv items={tasks} clickHandler={this.editTaskState} />
+        <ItemListDiv items={tasks} onClick={this.editTaskState} />
       </div>
     );
   }
