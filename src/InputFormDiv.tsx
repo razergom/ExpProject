@@ -1,6 +1,12 @@
-import React from "react";
+import * as React from "react";
 
-export class InputFormDiv extends React.Component {
+interface Props {
+  value: string;
+  onChange(event: any): any;
+  onClick(): any;
+}
+
+export class InputFormDiv extends React.Component<Props, {}> {
   render() {
     return (
       <div className="input-form">

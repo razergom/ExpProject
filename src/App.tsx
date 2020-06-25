@@ -1,9 +1,21 @@
-import React from "react";
+import * as React from "react";
 
-import { InputFormDiv } from "./InputFormDiv.jsx";
-import { ItemListDiv } from "./ItemListDiv.jsx";
+import { InputFormDiv } from "./InputFormDiv";
+import { ItemListDiv } from "./ItemListDiv";
 
-export default class App extends React.Component {
+import Service from "./Service";
+import Task from "./Task";
+
+interface Props {
+  service: Service;
+}
+
+interface State {
+  currentTask: string;
+  tasks: Array<Task>;
+}
+
+export default class App extends React.Component<Props, State> {
   state = {
     currentTask: "",
     tasks: [],
@@ -22,7 +34,7 @@ export default class App extends React.Component {
     this.props.service
       .createTask(this.state.currentTask)
       .then((newTask) => {
-        const newTasks = this.state.tasks;
+        const newTasks: Array<Task> = this.state.tasks;
         newTasks.push(newTask);
 
         this.setState((prevState) => ({
@@ -37,7 +49,7 @@ export default class App extends React.Component {
   };
 
   editTaskState = (id) => {
-    const newTasks = this.state.tasks;
+    const newTasks: Array<Task> = this.state.tasks;
 
     let index = 0;
 
@@ -50,8 +62,7 @@ export default class App extends React.Component {
 
     newTasks[index].done = !newTasks[index].done;
 
-    this.setState({ taskStates: newTasks });
-    console.log(this.state.tasks);
+    this.setState({ tasks: newTasks });
   };
 
   render() {
