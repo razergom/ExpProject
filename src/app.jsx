@@ -15,6 +15,10 @@ export default class App extends React.Component {
       return;
     }
 
+    this.setState({
+      currentTask: "",
+    });
+
     this.props.service
       .createTask(this.state.currentTask)
       .then((newTask) => {
@@ -23,18 +27,9 @@ export default class App extends React.Component {
 
         this.setState((prevState) => ({
           tasks: newTasks,
-          currentTask: "",
         }));
       })
       .catch((e) => alert(e));
-
-    //const newTasks = this.state.tasks;
-    //newTasks.push(newTask);
-
-    //this.setState((prevState) => ({
-    //  tasks: newTasks,
-    //  currentTask: "",
-    //}));
   };
 
   updateCurrentTask = (event) => {
