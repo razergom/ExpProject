@@ -1,6 +1,13 @@
-import React from "react";
+import * as React from "react";
 
-export class ItemListDiv extends React.Component {
+import Task from "./Task";
+
+interface Props {
+  items: Array<Task>;
+  onClick(id: string): any;
+}
+
+export class ItemListDiv extends React.Component<Props, {}> {
   render() {
     return (
       <div className="item-list">
