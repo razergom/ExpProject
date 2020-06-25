@@ -5,7 +5,6 @@ import { ItemListDiv } from "./ItemListDiv.jsx";
 
 export default class App extends React.Component {
   state = {
-    id: 0,
     currentTask: "",
     tasks: [],
   };
@@ -16,19 +15,26 @@ export default class App extends React.Component {
       return;
     }
 
-    let newTask = {};
-    newTask.task = this.state.currentTask;
-    newTask.id = this.state.id;
-    newTask.done = false;
+    this.props.service
+      .createTask(this.state.currentTask)
+      .then((newTask) => {
+        const newTasks = this.state.tasks;
+        newTasks.push(newTask);
 
-    const newTasks = this.state.tasks;
-    newTasks.push(newTask);
+        this.setState((prevState) => ({
+          tasks: newTasks,
+          currentTask: "",
+        }));
+      })
+      .catch((e) => alert(e));
 
-    this.setState((prevState) => ({
-      tasks: newTasks,
-      currentTask: "",
-      id: prevState.id + 1,
-    }));
+    //const newTasks = this.state.tasks;
+    //newTasks.push(newTask);
+
+    //this.setState((prevState) => ({
+    //  tasks: newTasks,
+    //  currentTask: "",
+    //}));
   };
 
   updateCurrentTask = (event) => {
