@@ -1,4 +1,4 @@
-import * as React from "react";
+import React from "react";
 
 import { InputFormDiv } from "./InputFormDiv";
 import { ItemListDiv } from "./ItemListDiv";
@@ -41,7 +41,7 @@ export default class App extends React.Component<Props, State> {
           tasks: newTasks,
         }));
       })
-      .catch((e) => alert(e));
+      .catch(alert);
   };
 
   updateCurrentTask = (event) => {
@@ -49,20 +49,13 @@ export default class App extends React.Component<Props, State> {
   };
 
   editTaskState = (id) => {
-    const newTasks: Array<Task> = this.state.tasks;
+    const newTasks: Array<Task> = [...this.state.tasks];
+    const index = newTasks.findIndex((task) => task.id === id);
 
-    let index = 0;
-
-    for (let i = 0; i < newTasks.length; i++) {
-      if (newTasks[i].id === id) {
-        index = i;
-        break;
-      }
+    if (index !== -1) {
+      newTasks[index].done = !newTasks[index].done;
+      this.setState({ tasks: newTasks });
     }
-
-    newTasks[index].done = !newTasks[index].done;
-
-    this.setState({ tasks: newTasks });
   };
 
   render() {

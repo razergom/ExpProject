@@ -1,23 +1,24 @@
-import * as React from "react";
+import React, { ChangeEventHandler } from "react";
 
 interface Props {
   value: string;
-  onChange(event: any): any;
-  onClick(): any;
+  onChange: ChangeEventHandler<HTMLInputElement>;
+  onClick: () => void;
 }
 
 export class InputFormDiv extends React.Component<Props, {}> {
   render() {
+    const { value, onChange, onClick } = this.props;
     return (
       <div className="input-form">
         <input
-          value={this.props.value}
+          value={value}
           type="text"
           id="#todo-input"
           placeholder="Enter Task"
-          onChange={this.props.onChange}
+          onChange={onChange}
         ></input>
-        <button id="#addbtn" onClick={this.props.onClick}>
+        <button id="#addbtn" onClick={onClick}>
           Add Task
         </button>
       </div>
