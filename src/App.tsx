@@ -34,7 +34,7 @@ export default class App extends React.Component<Props, State> {
     this.props.service
       .createTask(this.state.currentTask)
       .then((newTask) => {
-        const newTasks: Array<Task> = this.state.tasks;
+        const newTasks: Array<Task> = [...this.state.tasks];
         newTasks.push(newTask);
 
         this.setState((prevState) => ({
